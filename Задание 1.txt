@@ -5,7 +5,7 @@ fun main() {
     println("По условию задачи: комиссия 0.75%, минимум 35 рублей")
     println()
 
-    // Пример 1: можно изменить это значение
+
     var amount1 = 10000L // 100 рублей = 10000 копеек
     println("Пример 1:")
     println("Сумма перевода: ${amount1} копеек (${formatToRubles(amount1)})")
@@ -14,7 +14,7 @@ fun main() {
     println("Итого к списанию: ${amount1 + commission1} копеек (${formatToRubles(amount1 + commission1)})")
     println()
 
-    // Пример 2: другое значение
+
     val amount2 = 5000L // 50 рублей
     println("Пример 2:")
     println("Сумма перевода: ${amount2} копеек (${formatToRubles(amount2)})")
@@ -23,7 +23,7 @@ fun main() {
     println("Итого: ${amount2 + commission2} копеек (${formatToRubles(amount2 + commission2)})")
     println()
 
-    // Пример 3: маленькая сумма (проверка минимальной комиссии)
+
     val amount3 = 1000L // 10 рублей
     println("Пример 3:")
     println("Сумма перевода: ${amount3} копеек (${formatToRubles(amount3)})")
@@ -32,9 +32,8 @@ fun main() {
     println("Итого: ${amount3 + commission3} копеек (${formatToRubles(amount3 + commission3)})")
     println()
 
-    // Интерактивный пример
-    println("=== Интерактивный расчет ===")
-    println("Введите сумму перевода в рублях (например: 150.50):")
+
+   
     val input = readlnOrNull()
     if (input != null) {
         try {
@@ -51,26 +50,18 @@ fun main() {
     }
 }
 
-/**
- * Рассчитывает комиссию за перевод
- * @param amount сумма перевода в копейках
- * @return комиссия в копейках (0.75%, минимум 35 рублей)
- */
+
 fun calculateCommission(amount: Long): Long {
     if (amount <= 0) return 0L
     
-    val minCommission = 3500L // 35 рублей в копейках
+    val minCommission = 3500L 
+       val commissionPercentage = (amount * 0.75) / 100
     
-    // Рассчитываем 0.75% комиссии
-    val commissionPercentage = (amount * 0.75) / 100
-    
-    // Используем max для определения большей величины
+
     return max(commissionPercentage.toLong(), minCommission)
 }
 
-/**
- * Форматирует сумму в копейках в читаемый вид с рублями
- */
+ 
 fun formatToRubles(kopecks: Long): String {
     val rubles = kopecks / 100
     val cents = kopecks % 100
@@ -82,17 +73,13 @@ fun formatToRubles(kopecks: Long): String {
     }
 }
 
-/**
- * Дополнительная функция для быстрого расчета
- */
+
 fun calculateCommissionForRubles(rubles: Double): Long {
     val kopecks = (rubles * 100).toLong()
     return calculateCommission(kopecks)
 }
 
-/**
- * Функция для тестирования разных значений
- */
+
 fun testDifferentValues() {
     println("\n=== Тестовые расчеты ===")
     
